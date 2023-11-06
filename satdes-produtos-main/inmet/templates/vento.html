@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gráfico de Rosa dos Ventos</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <canvas id="windRoseChart" width="400" height="400"></canvas>
+
+    <script>
+        // Dados do JSON com cores
+        const jsonData = {{ filteredData | safe }};
+        
+        // Função para criar o gráfico de rosa dos ventos
+        function createWindRoseChart(data) {
+            const directions = data.map(item => parseFloat(item.VEN_DIR));
+            const speeds = data.map(item => parseFloat(item.VEN_VEL));
+            const colors = data.map(item => item.COR); // Cores baseadas na velocidade do vento
+
+            const numClasses = 16;
+
+            // Calcular os intervalos de direção
+            const directionRange = 360; // Ângulo total em graus
+            const classSize = directionRange / numClasses;
+            const classLabels = [];
+
+            for (let i = 0; i < numClasses; i++) {
+                const startAngle = ((i * classSize + 340) % 360); // Ajustar o início para 340 graus
+                const endAngle = ((i + 1) * classSize + 340) % 360; // Ajustar o fim para 340 graus
+                classLabels.push(`${startAngle}-${endAngle}`);
+            }
+
+            // Classificar os dados em classes e associar as cores
+            const classData = Array(numClasses).fill(0);
+            const classColors = Array(numClasses).fill('rgba(0, 123, 255, 0.5)'); // Cor padrão
+
+            directions.forEach((direction, index) => {
+                const adjustedDirection = (direction + 360 - 340) % 360; // Ajustar a direção para começar em 340 graus
+                const classIndex = Math.floor(adjustedDirection / classSize);
+                classData[classIndex] += 1;
+                classColors[classIndex] = colors[index]; // Usar a cor correspondente
+            });
+
+            const ctx = document.getElementById("windRoseChart").getContext("2d");
+
+            new Chart(ctx, {
+                type: 'polarArea',
+                data: {
+                    labels: classLabels,
+                    datasets: [{
+                        data: classData,
+                        backgroundColor: classColors, // Usar as cores correspondentes
+                        label: 'Wind Speed (m/s)' // Legenda para a velocidade do vento
+                    }]
+                },
+            });
+        }
+
+        // Chame a função para criar o gráfico com os dados do JSON
+        createWindRoseChart(jsonData);
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+

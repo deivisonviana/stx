@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gráfico de Temperaturas</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <canvas id="temperaturesChart" width="800" height="400"></canvas>
+
+    <script>
+        // Replace this JSON data with your actual data
+        var jsonData = {{ filteredData | safe }};
+
+        // Function to handle null values and convert them to 0
+        function handleNullValue(value) {
+            return value !== null ? parseFloat(value) : 0;
+        }
+
+        var ctx = document.getElementById('temperaturesChart').getContext('2d');
+        var data = {
+            labels: jsonData.map(entry => entry.DT_MEDICAO),
+            datasets: [
+                {
+                    label: 'Temperatura Mínima',
+                    data: jsonData.map(entry => handleNullValue(entry.TEM_MIN)),
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                },
+
+                {
+                    label: 'Temperatura Instantânea',
+                    data: jsonData.map(entry => handleNullValue(entry.TEM_INS)),
+                    backgroundColor: 'rgba(255, 255, 0, 0.4)', // Amarelo com 20% de transparência
+                    borderColor: 'rgba(255, 255, 0, 1)', // Amarelo sem transparência
+                    borderWidth: 1
+                },
+
+                {
+                    label: 'Temperatura Máxima',
+                    data: jsonData.map(entry => handleNullValue(entry.TEM_MAX)),
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                }
+            ]
+        };
+
+        var options = {
+            scales: {
+                x: {
+                    beginAtZero: true,
+                    title: {
+                    display: true,
+                    text: jsonData[0].DT_MEDICAO}
+                }
+            }
+        };
+
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: data,
+            options: options
+        });
+    </script>
+</body>
+</html>

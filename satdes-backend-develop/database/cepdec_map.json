@@ -1,0 +1,97 @@
+{
+    "name": 0,
+    "date": 2,
+    "hour": 3,
+    "variables": {
+        "1": {
+            "instant": 4,
+            "maximun": null,
+            "minimun": null,
+            "average": null
+        },
+        "7": {
+            "instant": 5,
+            "maximun": 7,
+            "minimun": 8,
+            "average": 6
+        },
+        "2": {
+            "instant": 9,
+            "maximun": 11,
+            "minimun": 12,
+            "average": 10
+        },
+        "5": {
+            "instant": 13,
+            "maximun": 15,
+            "minimun": 16,
+            "average": 14
+        },
+        "8": {
+            "instant": 17,
+            "maximun": 19,
+            "minimun": 20,
+            "average": 18
+        },
+        "9": {
+            "instant": 21,
+            "maximun": 23,
+            "minimun": 24,
+            "average": 22
+        },
+        "10": {
+            "instant": 25,
+            "maximun": 27,
+            "minimun": 28,
+            "average": 26
+        },
+        "11": {
+            "instant": 29,
+            "maximun": 31,
+            "minimun": 32,
+            "average": 30
+        },
+        "12": {
+            "instant": 33,
+            "maximun": 35,
+            "minimun": 36,
+            "average": 34
+        },
+        "3": {
+            "instant": 41,
+            "maximun": 43,
+            "minimun": 44,
+            "average": 42
+        },
+        "13": {
+            "instant": 45,
+            "maximun": 47,
+            "minimun": 48,
+            "average": 46
+        },
+        "14": {
+            "instant": 49,
+            "maximun": 51,
+            "minimun": 52,
+            "average": 50
+        },
+        "4": {
+            "instant": 53,
+            "maximun": 55,
+            "minimun": 56,
+            "average": 54
+        },
+        "6": {
+            "instant": 57,
+            "maximun": 59,
+            "minimun": 60,
+            "average": 58
+        },
+        "15": {
+            "instant": 61,
+            "maximun": null,
+            "minimun": null,
+            "average": null
+        }
+    }
+}

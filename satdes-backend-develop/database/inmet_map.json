@@ -1,0 +1,61 @@
+{
+    "name": "CD_ESTACAO",
+    "date": "DT_MEDICAO",
+    "hour": "HR_MEDICAO",
+    "variables": {
+        "2": {
+            "instant": "TEM_INS",
+            "maximun": "TEM_MAX",
+            "minimun": "TEM_MIN",
+            "average": null
+        },
+        "5": {
+            "instant": "UMD_INS",
+            "maximun": "UMD_MAX",
+            "minimun": "UMD_MIN",
+            "average": null
+        },
+        "16": {
+            "instant": "PTO_INS",
+            "maximun": "PTO_MAX",
+            "minimun": "PTO_MIN",
+            "average": null
+        },
+        "7": {
+            "instant": "PRE_INS",
+            "maximun": "PRE_MAX",
+            "minimun": "PRE_MIN",
+            "average": null
+        },
+        "13": {
+            "instant": "VEN_DIR",
+            "maximun": null,
+            "minimun": null,
+            "average": null
+        },
+        "14": {
+            "instant": "VEN_VEL",
+            "maximun": null,
+            "minimun": null,
+            "average": null
+        },
+        "17": {
+            "instant": "VEN_RAJ",
+            "maximun": null,
+            "minimun": null,
+            "average": null
+        },
+        "8": {
+            "instant": "RAD_GLO",
+            "maximun": null,
+            "minimun": null,
+            "average": null
+        },
+        "15": {
+            "instant": "CHUVA",
+            "maximun": null,
+            "minimun": null,
+            "average": null
+        }
+    }
+}

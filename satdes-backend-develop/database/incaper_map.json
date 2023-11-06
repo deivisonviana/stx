@@ -1,0 +1,14 @@
+{
+    
+    "name": 0,
+    "date": 2,
+    "hour": 3,
+    "variables": {
+        "1": {
+            "instant": null,
+            "maximun": null,
+            "minimun": null,
+            "average": null
+        }
+    }
+}

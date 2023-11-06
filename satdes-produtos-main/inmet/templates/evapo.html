@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gráfico de Precipitação e ET</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <canvas id="myChart" width="400" height="200"></canvas>
+
+    <script>
+        // Dados de exemplo para precipitação e ET (substitua pelos seus próprios dados)
+        var jsonData = {{ filteredData | safe }};
+
+        // Extrair os rótulos, precipitação e ET dos dados
+        var labels = jsonData.map(function(entry) {
+            return entry.DT_MEDICAO;
+        });
+
+        var precipitacaoData = jsonData.map(function(entry) {
+            return entry.CHUVA;
+        });
+
+        var etData = jsonData.map(function(entry) {
+            return entry.ET;
+        });
+
+        // Crie um contexto para o gráfico
+        const ctx = document.getElementById('myChart').getContext('2d');
+
+        // Crie o gráfico
+        const myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'Precipitação',
+                        data: precipitacaoData,
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1,
+                        yAxisID: 'precipitation-axis'
+                    },
+                    {
+                        label: 'ET',
+                        data: etData,
+                        fill: false,
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 2,
+                        type: 'line',
+                        yAxisID: 'et-axis'
+                    }
+                ]
+            },
+            options: {
+                scales: {
+                    y: [
+                        {
+                            id: 'et-axis',
+                            type: 'linear',
+                            position: 'left',
+                            beginAtZero: true
+                        },
+                        {
+                            id: 'precipitation-axis',
+                            type: 'linear',
+                            position: 'right',
+                            beginAtZero: true
+                        }
+                    ]
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+
+
